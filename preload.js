@@ -1,11 +1,21 @@
-const { contextBridge, ipcRenderer } = require("electron");
+const { ipcRenderer, contextBridge } = require('electron');
+
+
 contextBridge.exposeInMainWorld('electron', {
-    homeDir: () => os.homedir(),
-    osVersion: () => os.arch(),
-  });
-  
-  contextBridge.exposeInMainWorld('ipcRenderer', {
-    send: (channel, data) => ipcRenderer.send(channel, data),
-    on: (channel, func) =>
-      ipcRenderer.on(channel, (event, ...args) => func(event, ...args)),
-  });
+  notificationApi: {
+    sendNotification(message) {
+      ipcRenderer.send('notify', message);
+    }
+  },
+  appApi: {
+    quitApp() {
+      ipcRenderer.send('app-quit');
+    }
+  },
+  batteryApi: {
+
+  },
+  fileApi: {
+
+  }
+})

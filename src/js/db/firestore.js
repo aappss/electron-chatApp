@@ -1,8 +1,5 @@
-// Import the functions you need from the SDKs you need
-import firebase from 'firebase/compat/app';
-// import {initializeApp} from 'firebase/app';
-import 'firebase/compat/firestore';
-// import { getFirestore } from "firebase/firestore";
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 
 
 const config = {
@@ -21,8 +18,6 @@ const config = {
 
 };
 
-// Initialize Firebase
+// export const { Timestamp } = firebase.firestore;
 
-// const app = firebase.initializeApp(config);
-// export const db = firebase.firestore(app);
-export default firebase.initializeApp(config).firestore()
+export default firebase.initializeApp(config).firestore();
